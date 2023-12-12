@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install dependencies
-      run: sudo apt-get install git
     - uses: actions/checkout@v1
     # HTML
     - uses: us4useu/sphinx-action@master
@@ -22,7 +20,7 @@ jobs:
     - uses: us4useu/sphinx-action@master
       with:
         pre-build-command: "apt-get --allow-releaseinfo-change update -y  && apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended latexmk"
-        build-command: "make latexpdf"
+        build-command: "make clean latexpdf"
         docs-folder: "docs/"
     - uses: softprops/action-gh-release@v1
       with:
